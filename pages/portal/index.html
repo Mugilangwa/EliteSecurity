@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Portal — Elite Security Services</title>
+    <meta name="description" content="Elite Security Client Portal — Access live CCTV, patrol logs, request quotes, and report incidents 24/7.">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/portal.css">
+</head>
+<body class="portal-page">
+
+    <!-- ============ HEADER ============ -->
+    <header class="site-header">
+        <div class="container">
+            <a href="../../index.html" class="site-logo">
+                <img src="../../assets/images/logo/elite-logo.png" alt="Elite Security Services">
+            </a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../about/index.html">About</a></li>
+                    <li><a href="../services/index.html">Services</a></li>
+                    <li><a href="../mission/index.html">Mission &amp; Vision</a></li>
+                    <li><a href="index.html" class="active">Portal</a></li>
+                </ul>
+                <a href="../../index.html#quote" class="btn-quote">Get a Quote</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============ STATUS BAR ============ -->
+    <div class="status-bar">
+        <div class="container">
+            <div class="status-item">
+                <span class="status-dot online"></span>
+                <span class="status-label">Command Center:</span>
+                <span class="status-value">Operational</span>
+            </div>
+            <div class="status-item">
+                <span class="status-dot online"></span>
+                <span class="status-label">Response Units:</span>
+                <span class="status-value">12 Active</span>
+            </div>
+            <div class="status-item">
+                <span class="status-dot online"></span>
+                <span class="status-label">CCTV Network:</span>
+                <span class="status-value">Online</span>
+            </div>
+            <div class="status-item hide-mobile">
+                <span class="status-dot online"></span>
+                <span class="status-label">Local Time:</span>
+                <span class="status-value" id="liveClock">--:--:--</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PAGE HEADER ============ -->
+    <section class="page-header portal-header">
+        <div class="container">
+            <div class="portal-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                <span>Secure Access Portal</span>
+            </div>
+            <h1>Elite Security Operations Portal</h1>
+            <p>Access live monitoring, request services, and report incidents to our 24/7 Command Center.</p>
+        </div>
+    </section>
+
+    <!-- ============ PORTAL MAIN ============ -->
+    <section class="portal-section">
+        <div class="container">
+            <div class="portal-grid">
+
+                <!-- ============ LEFT: PORTAL TABS ============ -->
+                <div class="portal-container">
+                    <div class="portal-tabs">
+                        <button class="tab-btn active" data-tab="client-login">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <span>Client Login</span>
+                        </button>
+                        <button class="tab-btn" data-tab="request-service">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                            <span>Request Quote</span>
+                        </button>
+                        <button class="tab-btn" data-tab="report-incident">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                            <span>Report Incident</span>
+                        </button>
+                    </div>
+
+                    <!-- -------- TAB 1: CLIENT LOGIN -------- -->
+                    <div class="tab-content active" id="client-login">
+                        <div class="tab-header">
+                            <h3>Client Access Portal</h3>
+                            <p class="tab-desc">Log in to view live CCTV feeds, patrol logs, and account details.</p>
+                        </div>
+
+                        <form id="loginForm" autocomplete="off">
+                            <div class="form-group">
+                                <label for="client-id">Account / Client ID</label>
+                                <div class="input-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                                    <input type="text" id="client-id" required placeholder="e.g. ESL-88392">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <div class="input-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                                    <input type="password" id="password" required placeholder="••••••••">
+                                </div>
+                            </div>
+
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="remember">
+                                    <span>Remember this device</span>
+                                </label>
+                                <a href="#" class="link-accent">Forgot Password?</a>
+                            </div>
+
+                            <button type="submit" class="btn-portal-primary">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 17l5-5-5-5v10zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                                Login to Dashboard
+                            </button>
+
+                            <div class="form-footer-links">
+                                <a href="#">Request Client Access</a>
+                                <a href="#">Need Help?</a>
+                            </div>
+
+                            <div class="security-note">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                                <span>All connections are encrypted with 256-bit SSL security</span>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- -------- TAB 2: REQUEST QUOTE -------- -->
+                    <div class="tab-content" id="request-service">
+                        <div class="tab-header">
+                            <h3>Request Security Service</h3>
+                            <p class="tab-desc">Submit details to receive an official proposal or site assessment.</p>
+                        </div>
+
+                        <form id="quoteForm">
+                            <div class="form-group">
+                                <label for="quote-name">Full Name / Organization</label>
+                                <div class="input-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+                                    <input type="text" id="quote-name" required placeholder="Company or Full Name">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="quote-email">Email Address</label>
+                                    <div class="input-icon-wrap">
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                        <input type="email" id="quote-email" required placeholder="name@domain.co.tz">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="quote-phone">Phone</label>
+                                    <div class="input-icon-wrap">
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                        <input type="tel" id="quote-phone" placeholder="+255 ...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="quote-service">Service Required</label>
+                                <div class="input-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                                    <select id="quote-service" required>
+                                        <option value="" disabled selected>Select service type...</option>
+                                        <option value="MANNED GUARDING SERVICES">Manned Guarding Services</option>
+                                        <option value="VIP & EXECUTIVE PROTECTION">VIP &amp; Executive Protection</option>
+                                        <option value="ELECTRONIC SECURITY SOLUTIONS">Electronic Security Solutions</option>
+                                        <option value="K9 SECURITY SERVICES">K9 Security Services</option>
+                                        <option value="RAPID RESPONSE & MOBILE PATROL">Rapid Response &amp; Mobile Patrol</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="quote-notes">Requirements Details</label>
+                                <textarea id="quote-notes" rows="4" required placeholder="Describe location, number of guards, or technology needed..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-portal-primary">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                                Submit Quote Request
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- -------- TAB 3: REPORT INCIDENT -------- -->
+                    <div class="tab-content" id="report-incident">
+                        <div class="tab-header">
+                            <h3>Incident Reporting Portal</h3>
+                            <p class="tab-desc">Report an incident directly to our 24/7 Command Operations Center.</p>
+                        </div>
+
+                        <div class="alert-banner">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                            <span>For life-threatening emergencies, call <strong>+255 700 000 000</strong> immediately.</span>
+                        </div>
+
+                        <form id="incidentForm">
+                            <div class="form-group">
+                                <label for="reporter-name">Reporter Name / Anonymous</label>
+                                <div class="input-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                                    <input type="text" id="reporter-name" placeholder="Optional for public reports">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location">Location / Premises</label>
+                                <div class="input-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                    <input type="text" id="location" required placeholder="e.g. Plot 12, Mikocheni B">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="incident-type">Incident Type</label>
+                                <div class="input-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                                    <select id="incident-type" required>
+                                        <option value="" disabled selected>Select category...</option>
+                                        <option value="Suspicious Activity">Suspicious Activity</option>
+                                        <option value="Security Breach / Intrusion">Security Breach / Intrusion</option>
+                                        <option value="System / Camera Fault">System / Camera Fault</option>
+                                        <option value="Emergency Response Request">Emergency Response Request</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="incident-desc">Incident Description</label>
+                                <textarea id="incident-desc" rows="4" required placeholder="Provide concise details about the event..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-portal-primary btn-danger">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                                Submit Incident Report
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ============ RIGHT: LOCATION & INFO ============ -->
+                <div class="location-info">
+
+                    <!-- Contact Info Cards -->
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div class="info-body">
+                            <h4>Head Office Address</h4>
+                            <p>Elite Security Building, Plot 102<br>Ali Hassan Mwinyi Road<br>Dar es Salaam, Tanzania</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </div>
+                        <div class="info-body">
+                            <h4>Phone &amp; Emergency Lines</h4>
+                            <p>
+                                <strong>24/7 Hotline:</strong> +255 700 000 000<br>
+                                <strong>Office:</strong> +255 222 000 000
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <div class="info-body">
+                            <h4>Email Enquiries</h4>
+                            <p>
+                                <a href="mailto:info@elitesecurity.co.tz">info@elitesecurity.co.tz</a><br>
+                                <a href="mailto:support@elitesecurity.co.tz">support@elitesecurity.co.tz</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Response Card -->
+                    <div class="emergency-card">
+                        <div class="emergency-header">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                            <h4>24/7 Emergency Response</h4>
+                        </div>
+                        <p>Our command center operates around the clock with GPS-tracked patrol units ready for immediate deployment.</p>
+                        <div class="emergency-stats">
+                            <div class="e-stat">
+                                <span class="e-number">12</span>
+                                <span class="e-label">Active Units</span>
+                            </div>
+                            <div class="e-stat">
+                                <span class="e-number">&lt;8min</span>
+                                <span class="e-label">Avg Response</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Embedded Google Map -->
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.58638742819!2d39.18538355!3d-6.792354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4bae169bd6f1%3A0x940f6b26a086a1dd!2sDar%20es%20Salaam%2C%20Tanzania!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="../../assets/images/logo/elite-logo.png" alt="Elite Security Services">
+                    <p>Professional &amp; technology-driven security solutions across Tanzania.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="../about/index.html">About Us</a></li>
+                        <li><a href="../mission/index.html">Mission &amp; Vision</a></li>
+                        <li><a href="../services/index.html">Services</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="../services/index.html">Guarding</a></li>
+                        <li><a href="../services/index.html">CCTV Systems</a></li>
+                        <li><a href="../services/index.html">VIP Protection</a></li>
+                        <li><a href="../services/index.html">Mobile Patrol</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Access</h4>
+                    <ul>
+                        <li><a href="index.html">Client Portal</a></li>
+                        <li><a href="../../index.html#quote">Request a Quote</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Elite Security Company Limited. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/portal.js"></script>
+</body>
+</html>

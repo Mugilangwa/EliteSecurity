@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Security Services</title>
+    <style>
+        /* Modern Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            background-image: url("elitesecurity8.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: wheat;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #0b1d3a;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        /* Main Content Styling */
+        main {
+            max-width: 1000px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #0b1d3a;
+        }
+
+        h1, h2 {
+            color: #0b1d3a;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Image Slider Styling */
+        .slider-container {
+            position: relative;
+            max-width: 100%;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 380px;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Slider Controls */
+        .prev-btn, .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(11, 29, 58, 0.7);
+            color: #ffffff;
+            border: none;
+            font-size: 1.5rem;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            z-index: 10;
+        }
+
+        .prev-btn:hover, .next-btn:hover {
+            background-color: #0b1d3a;
+            color: #d4af37;
+        }
+
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+
+        /* Slider Dots */
+        .dots-container {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: #d4af37;
+        }
+
+        /* Contact Section Layout */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            width: 100%;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        form label {
+            font-weight: 600;
+            color: #0b1d3a;
+            font-size: 0.9rem;
+        }
+
+        form input, 
+        form select,
+        form textarea {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background-color: #fff;
+            width: 100%;
+        }
+
+        form input:focus, 
+        form select:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: #0b1d3a;
+            box-shadow: 0 0 5px rgba(11, 29, 58, 0.2);
+        }
+
+        form button {
+            background-color: #0b1d3a;
+            color: #ffffff;
+            border: none;
+            padding: 0.9rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            align-self: flex-start;
+        }
+
+        form button:hover {
+            background-color: #1a365d;
+        }
+
+        /* Office Location Details Styling */
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #d4af37;
+        }
+
+        .info-card svg {
+            width: 22px;
+            height: 22px;
+            fill: #0b1d3a;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .info-card h4 {
+            color: #0b1d3a;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .info-card p {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #0b1d3a;
+            color: #ffffff;
+            padding: 2.5rem 5% 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-brand h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-brand p {
+            color: #d4af37;
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #d4af37;
+            color: #0b1d3a;
+            transform: translateY(-3px);
+        }
+
+        .social-links svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .footer-bottom {
+            max-width: 1000px;
+            margin: 1.5rem auto 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .slide {
+                height: 240px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="elite-logo-transparent.png" alt="Elite Security Logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about us.html">About Us</a></li>
+                <li><a href="mission and vision.html">Mission and Vision</a></li>
+                <li><a href="services.html">Services</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>ABOUT US</h1>
+
+            <!-- Image Slider Component -->
+            <div class="slider-container">
+                <div class="slides" id="slides">
+                    <div class="slide"><img src="elite cover.jpg" alt="Security Personnel"></div>
+                    <div class="slide"><img src="elitesecurity 26.jpg" alt="Surveillance Control Room"></div>
+                    <div class="slide"><img src="elitesecurity22.jpg" alt="Mobile Patrol Vehicle"></div>
+                    <div class="slide"><img src="elitesecurity 23.jpg" alt="Security Team"></div>
+                    <div class="slide"><img src="elitesecurity 20.jpg" alt="Security Checkpoint"></div>
+                    <div class="slide"><img src="elitesecurity15.jpg" alt="Guarding Service"></div>
+                    <div class="slide"><img src="elitesecurity 21.jpg" alt="Patrol Operation"></div>
+                    <div class="slide"><img src="elitesecurity 19.jpg" alt="Control Room Operations"></div>
+                    <div class="slide"><img src="image1.jpg" alt="Elite Guard"></div>
+                </div>
+
+                <button class="prev-btn" id="prevBtn" type="button">&#10094;</button>
+                <button class="next-btn" id="nextBtn" type="button">&#10095;</button>
+
+                <div class="dots-container" id="dotsContainer"></div>
+            </div>
+
+            <p>
+                Elite Security Company Limited is a modern and professional security
+                services provider delivering integrated physical security, electronic
+                security, risk management, and emergency response solutions across
+                Tanzania.
+            </p>
+            <p>
+                We combine highly trained personnel, advanced technology, professional
+                leadership, and customer-focused operations to protect people,
+                property, businesses, and institutions in today’s evolving security
+                environment.
+            </p>
+            <p>
+                Our approach is built around professionalism, rapid response, discipline,
+                innovation, and operational excellence. We serve corporate
+                organizations, financial institutions, NGOs, industrial facilities, hospitality
+                establishments, residential estates, retail businesses, construction
+                projects, and government institutions.
+            </p>
+            <p>
+                Elite Security Company Limited is positioned to meet the demands of the
+                current Tanzanian security market through technology-driven security
+                operations, smart surveillance systems, mobile patrol management, and
+                modern guard force training.
+            </p>
+            <p>
+                Modern security companies in Tanzania are increasingly integrating AI-enabled CCTV, 
+                rapid response systems, GPS patrol monitoring, biometric access systems, and
+                integrated command centers.
+            </p>
+        </section>
+
+        <!-- Contact Us & Office Location Section -->
+        <section>
+            <h2>Contact Us & Location</h2>
+            <div class="contact-container">
+                <!-- Send Message Form -->
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="services">Choose Service</label>
+                        <select id="services" name="services" required>
+                            <option value="" disabled selected>Select a service...</option>
+                            <option value="MANNED GUARDING SERVICES">Manned Guarding Services</option>
+                            <option value="VIP & EXECUTIVE PROTECTION">VIP & Executive Protection</option>
+                            <option value="ELECTRONIC SECURITY SOLUTIONS">Electronic Security Solutions</option>
+                            <option value="K9 SECURITY SERVICES">K9 Security Services</option>
+                            <option value="RAPID RESPONSE & MOBILE PATROL">Rapid Response & Mobile Patrol</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
+                    </div>
+
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <!-- Office Location Details -->
+                <div class="location-info">
+                    <div class="info-card">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <div>
+                            <h4>Head Office Address</h4>
+                            <p>Elite Security Building, Plot 102<br>Ali Hassan Mwinyi Road, Dar es Salaam, Tanzania</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <div>
+                            <h4>Phone & Emergency Lines</h4>
+                            <p>24/7 Hotline: +255 700 000 000<br>Office: +255 222 000 000</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <div>
+                            <h4>Email Enquiries</h4>
+                            <p>info@elitesecurity.co.tz<br>support@elitesecurity.co.tz</p>
+                        </div>
+                    </div>
+
+                    <!-- Embedded Google Map -->
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.58638742819!2d39.18538355!3d-6.792354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4bae169bd6f1%3A0x940f6b26a086a1dd!2sDar%20es%20Salaam%2C%20Tanzania!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>  
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Elite Security Company Limited</h3>
+                <p>Professional & Technology-Driven Security Solutions</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                    <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z"/></svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Elite Security Company Limited. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Slider Functionality Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.getElementById('slides');
+            const slideItems = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('dotsContainer');
+
+            let currentIndex = 0;
+            const totalSlides = slideItems.length;
+            let slideInterval;
+
+            function createDots() {
+                dotsContainer.innerHTML = '';
+                slideItems.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        currentIndex = index;
+                        updateSlider();
+                        resetAutoSlide();
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function updateSlider() {
+                slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+                const dots = dotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentIndex);
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateSlider();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            }
+
+            function startAutoSlide() {
+                slideInterval = setInterval(nextSlide, 4000);
+            }
+
+            function resetAutoSlide() {
+                clearInterval(slideInterval);
+                startAutoSlide();
+            }
+
+            if (nextBtn && prevBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetAutoSlide();
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetAutoSlide();
+                });
+            }
+
+            createDots();
+            startAutoSlide();
+        });
+    </script>
+</body>
+</html>
